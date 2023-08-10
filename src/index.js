@@ -11,19 +11,18 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 const config = getConfig();
 
-const providerConfig = {
-	domain: config.domain,
-	clientId: config.clientId,
-	authorizationParams: {
-		redirect_uri: window.location.origin,
-		...(config.audience ? { audience: config.audience } : null),
-	},
-};
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<Auth0Provider {...providerConfig}>
+		<Auth0Provider
+			domain={'dev-fyvsioohfbyldx01.us.auth0.com'}
+			clientId={'YFGQ5FxLgjS7MGN9lJLVD0J5ePWl03Nw'}
+			authorizationParams={{
+				redirect_uri: window.location.origin,
+			}}
+			useRefreshTokens={true}
+			cacheLocation="localstorage"
+		>
 			<App />
 		</Auth0Provider>
 	</React.StrictMode>
